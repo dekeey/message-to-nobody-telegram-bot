@@ -41,7 +41,12 @@ const messageIsSpam = async((message) => {
     .sort({date: -1})
     .toArray()
   );
-  return userMessages[0].date > ( (new Date().getTime() / 1000) - 20 ); // 20 sec limit
+  if (userMessages.length > 0) {
+    return userMessages[0].date > ( (new Date().getTime() / 1000) - 20 ); // 20 sec limit
+  } else {
+    return false
+  }
+
 });
 
 const addMessage = (message) => {
