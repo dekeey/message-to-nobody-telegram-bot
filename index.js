@@ -30,7 +30,7 @@ const removeMessage = (message) => {
 
 const getMessagesFromNobody = (userId) => {
   return collection.find({
-    "from.id": userId
+    "from.id": {"$ne": userId}
   }).toArray();
 };
 
